@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace zad3
+namespace zad1
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter a number:");
-            int n = int.Parse(Console.ReadLine());
-            Console.WriteLine("Reversed number:" + Reverse(n));
+            int n = int.Parse(Console.ReadLine().Replace("reverse(","").Replace(")",""));
+            Console.WriteLine(Reverse(n));
         }
 
         static int Reverse(int n, int reversedN=0)
