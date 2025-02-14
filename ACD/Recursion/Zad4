@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace zad3
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter a number:");
+            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine("Reversed number:" + Reverse(n));
+        }
+
+        static int Reverse(int n, int reversedN=0)
+        {
+            if (n == 0)
+                return reversedN;
+            else return Reverse(n/10,reversedN*10+n%10);
+        }
+    }
+}
