@@ -1,0 +1,41 @@
+using System.Collections.Immutable;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        static void BubbleSort((string Name, int Age)[] array)
+        {
+            int n = array.Length;
+            for (int i = 0; i < n - 1; i++)
+                for (int j = 0; j < n - i - 1; j++)
+                    if (array[j].Age > array[j + 1].Age)
+                        (array[j], array[j + 1]) = (array[j + 1], array[j]);
+        }
+
+        static void Main()
+        {
+            var students = new (string Name, int Age)[]
+            {
+            ("Alice", 24),
+            ("Bob", 19),
+            ("Charlie", 22),
+            ("John", 11)
+            };
+
+            Console.WriteLine("Before Sorting:");
+            foreach (var student in students)
+            {
+                Console.WriteLine(student.ToString());
+            }
+
+            BubbleSort(students);
+
+            Console.WriteLine("After Sorting:");
+            foreach (var student in students)
+            {
+                Console.WriteLine(student.ToString());
+            }
+        }
+    }
+}
