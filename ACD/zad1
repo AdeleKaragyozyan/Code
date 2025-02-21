@@ -1,5 +1,5 @@
 using System.Collections.Immutable;
-
+ 
 namespace ConsoleApp3
 {
     internal class Program
