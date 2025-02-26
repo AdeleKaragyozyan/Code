@@ -1,5 +1,3 @@
-internal class LinearSearchWithMoveToFront
-{
     public static int Search(int[] array, int key)
     {
         for (int i = 0; i < array.Length; i++)
@@ -20,4 +18,3 @@ internal class LinearSearchWithMoveToFront
         }
         return -1;
     }
-}
