@@ -8,7 +8,6 @@ internal class LinearSearchWithTransposition
             {
                 if (i != 0)
                 {
-                    // Swap the found element with the previous one
                     int temp = array[i];
                     array[i] = array[i - 1];
                     array[i - 1] = temp;
