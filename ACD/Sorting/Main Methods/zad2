@@ -1,0 +1,54 @@
+namespace ConsoleApp7
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Student> students = new List<Student>
+        {
+            new Student("Batman", 3.50),
+            new Student("Juan", 4.75),
+            new Student("Anna", 5.90),
+            new Student("Emily", 5.95),
+            new Student("George", 6.00)
+        };
+
+            InsertionSort.SortStudents(students);
+
+            foreach (var student in students)
+            {
+                Console.WriteLine($"{student.Name} - {student.Grade}");
+            }
+        }
+    }
+        public class InsertionSort
+        {
+            public static void SortStudents(List<Student> students)
+            {
+                for (int i = 1; i < students.Count; i++)
+                {
+                    Student key = students[i];
+                    int j = i - 1;
+
+                    // Sort by grade first
+                    while (j >= 0 && (students[j].Grade > key.Grade || (students[j].Grade == key.Grade && string.Compare(students[j].Name, key.Name) > 0)))
+                    {
+                        students[j + 1] = students[j];
+                        j--;
+                    }
+                    students[j + 1] = key;
+                }
+            }
+        }
+    public class Student
+    {
+        public string Name { get; set; }
+        public double Grade { get; set; }
+        public Student(string name, double grade)
+        {
+            Name = name;
+            Grade = grade;
+        }
+     }
+    
+}
