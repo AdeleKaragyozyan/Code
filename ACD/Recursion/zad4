@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp6
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int a = int.Parse(Console.ReadLine().Replace("power(", "").Replace(")", "").Replace(",",""));
+            int b = a % 10;
+            a = (a - b) / 10;
+            Console.WriteLine(Power(a,b));
+        }
+        public static int Power(int a, int b)
+        {
+            if (b == 0)
+            {
+                return 1;
+            }
+            return a * Power(a, b - 1);
+        }
+    }
+}
