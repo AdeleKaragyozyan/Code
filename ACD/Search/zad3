@@ -1,5 +1,3 @@
-internal class LinearSearchWithTransposition
-{
     public static int Search(int[] array, int key)
     {
         for (int i = 0; i < array.Length; i++)
@@ -17,4 +15,3 @@ internal class LinearSearchWithTransposition
         }
         return -1;
     }
-}
