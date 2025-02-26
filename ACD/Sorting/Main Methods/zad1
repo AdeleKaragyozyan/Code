@@ -1,0 +1,47 @@
+namespace ConsoleApp7
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Student> students = new List<Student> 
+            { new Student("Alice", 23),
+            new Student("Bob", 21),
+            new Student("Charlie", 22) };
+
+            SortStudentsByAge(students);
+
+            foreach (var student in students)
+            {
+                Console.WriteLine($"Name: {student.Name}, Age: {student.Age}");
+            }
+        }
+        public static void SortStudentsByAge(List<Student> students)
+        {
+            int n = students.Count;
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = 0; j < n - i - 1; j++)
+                {
+                    if (students[j].Age > students[j + 1].Age)
+                    {
+                        Student temp = students[j];
+                        students[j] = students[j + 1];
+                        students[j + 1] = temp;
+                    }
+                }
+            }
+        }
+    }
+    public class Student
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+
+        public Student(string name, int age)
+        {
+            Name = name;
+            Age = age;
+        }
+    }
+}
