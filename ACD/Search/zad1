@@ -1,0 +1,21 @@
+internal class LinearSearchWithTransposition
+{
+    public static int Search(int[] array, int key)
+    {
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (array[i] == key)
+            {
+                if (i != 0)
+                {
+                    // Swap the found element with the previous one
+                    int temp = array[i];
+                    array[i] = array[i - 1];
+                    array[i - 1] = temp;
+                }
+                return i;
+            }
+        }
+        return -1;
+    }
+}
