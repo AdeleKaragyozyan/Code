@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp28
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            LinkedList<int> linkedList = new LinkedList<int>();
+
+            Console.WriteLine("Please enter numbers (type 'end' to finish):");
+            string input;
+            while ((input = Console.ReadLine()) != "end")
+            {
+                if (int.TryParse(input, out int number))
+                    linkedList.AddLast(number);
+                else
+                    Console.WriteLine("Invalid number. Please try again.");
+            }
+
+            linkedList = Reverse(linkedList);
+
+            Console.WriteLine("Reversed list:");
+            foreach (var item in linkedList)
+                Console.WriteLine(item);
+        }
+
+        static LinkedList<int> Reverse(LinkedList<int> linkedList)
+        {
+            LinkedList<int> reversedList = new LinkedList<int>();
+            foreach (var item in linkedList)
+                reversedList.AddFirst(item);
+            return reversedList;
+        }
+    }
+}
