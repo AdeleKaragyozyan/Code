@@ -1,0 +1,66 @@
+using System;
+using System.Collections.Generic;
+
+public class Student
+{
+    public string Name { get; set; }
+    public int Score { get; set; }
+
+    public Student(string name, int score)
+    {
+        Name = name;
+        Score = score;
+    }
+}
+
+public class University
+{
+    private List<Student> students;
+
+    public University()
+    {
+        students = new List<Student>();
+    }
+
+    public void AddStudent(Student student)
+    {
+        students.Add(student);
+        students.Sort((x, y) => x.Score.CompareTo(y.Score));
+    }
+
+    public string FindStudentByScore(int score)
+    {
+        int index = students.BinarySearch(new Student("", score), new ScoreComparer());
+
+        if (index >= 0)
+        {
+            return students[index].Name;
+        }
+        else
+        {
+            return "Не е намерен";
+        }
+    }
+
+    private class ScoreComparer : IComparer<Student>
+    {
+        public int Compare(Student x, Student y)
+        {
+            return x.Score.CompareTo(y.Score);
+        }
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        University university = new University();
+        university.AddStudent(new Student("Иван Иванов", 90));
+        university.AddStudent(new Student("Мария Петрова", 85));
+        university.AddStudent(new Student("Георги Георгиев", 95));
+
+        Console.WriteLine(university.FindStudentByScore(90)); // Иван Иванов
+        Console.WriteLine(university.FindStudentByScore(88)); // Не е намерен
+    }
+}
