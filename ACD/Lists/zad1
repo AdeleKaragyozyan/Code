@@ -14,9 +14,13 @@ namespace ConsoleApp28
             while ((input = Console.ReadLine()) != "end")
             {
                 if (int.TryParse(input, out int number))
+                {
                     linkedList.AddLast(number);
+                }
                 else
+                {
                     Console.WriteLine("Invalid number. Please try again.");
+                }
             }
 
             linkedList = Reverse(linkedList);
@@ -28,9 +32,27 @@ namespace ConsoleApp28
 
         static LinkedList<int> Reverse(LinkedList<int> linkedList)
         {
+            if (linkedList == null || linkedList.Count == 0)
+                return linkedList;
+
+            LinkedListNode<int> prevNode = null;
+            LinkedListNode<int> currNode = linkedList.First;
+
+            while (currNode != null)
+            {
+                LinkedListNode<int> nextNode = currNode.Next;
+                currNode.Next = prevNode;
+
+                prevNode = currNode;
+                currNode = nextNode;
+            }
             LinkedList<int> reversedList = new LinkedList<int>();
-            foreach (var item in linkedList)
-                reversedList.AddFirst(item);
+            while (prevNode != null)
+            {
+                reversedList.AddLast(prevNode.Value);
+                prevNode = prevNode.Next;
+            }
+
             return reversedList;
         }
     }
