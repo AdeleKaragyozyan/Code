@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace zad1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Enter text:");
+            string input = Console.ReadLine();
+            Stack<char> stack = new Stack<char>();
+            foreach (char i in input)
+                stack.Push(i);
+            Console.Write("Reversed text:");
+            while (stack.Count > 0)
+                Console.Write(stack.Pop());
+            Console.WriteLine();
+        }
+    }
+}
