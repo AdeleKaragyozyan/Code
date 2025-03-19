@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace queue1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Queue<int> queue = new Queue<int>();
+            Console.WriteLine("Enter 10 numbers:");
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write($"Number {i + 1}: ");
+                int number = int.Parse(Console.ReadLine());
+                queue.Enqueue(number);
+            }
+            Console.WriteLine("\nReversed numbers:");
+            Stack<int> stack = new Stack<int>();
+            foreach (var item in queue)
+                stack.Push(item);
+            foreach (var item in stack)
+                Console.Write(item + " ");
+            Console.ReadKey();
+        }
+    }
+}
