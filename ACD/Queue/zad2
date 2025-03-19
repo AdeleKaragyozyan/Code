@@ -1,0 +1,34 @@
+
+    using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace queue2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Enter word: ");
+            string inputWord = Console.ReadLine();
+            if (IsPalindrome(inputWord))
+                Console.WriteLine($"Word '{inputWord}' is a palindrome.");
+            else
+                Console.WriteLine($"Word '{inputWord}' is not a palindrome.");
+            Console.ReadKey();
+        }
+        static bool IsPalindrome(string word)
+        {
+            Queue<char> queue = new Queue<char>();
+            foreach (char c in word)
+                queue.Enqueue(c);
+
+            for (int i = 0; i < word.Length / 2; i++)
+                if (queue.Dequeue() != word[word.Length - i - 1])
+                    return false;
+            return true;
+        }
+    }
+}
