@@ -1,5 +1,4 @@
-
-    using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +20,7 @@ namespace queue2
         }
         static bool IsPalindrome(string word)
         {
-            Queue<char> queue = new Queue<char>();
-            foreach (char c in word)
-                queue.Enqueue(c);
-
+            Queue<char> queue = new Queue<char>(word);
             for (int i = 0; i < word.Length / 2; i++)
                 if (queue.Dequeue() != word[word.Length - i - 1])
                     return false;
