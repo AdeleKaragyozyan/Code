@@ -1,0 +1,34 @@
+namespace ConsoleApp8
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random rnd = new Random();
+            int num = int.Parse(Console.ReadLine());
+            
+            Queue<int> numbers = new Queue<int>();
+            for (int i = 0; i < num; i++)
+                numbers.Enqueue(rnd.Next(1, 101));
+            
+            Queue<int> evenumbers = new Queue<int>();
+            Stack<int> oddnumbers = new Stack<int>();
+            foreach (int number in numbers)
+            {
+                if (number % 2 == 0)
+                    evenumbers.Enqueue(number);
+                else
+                    oddnumbers.Push(number);
+            }
+
+            Console.WriteLine();
+            Console.Write("Even numbers: ");
+            foreach (int number in evenumbers)
+                Console.Write(number+" ");
+            Console.WriteLine();
+            Console.Write("Odd numbers: ");
+            foreach (int number in oddnumbers)
+                Console.Write(number+" ");
+        }
+    }
+}
