@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Domashno_Informatika
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            Queue<int> numbersQueue = new Queue<int>();
+
+            Console.Write("Въведете число N от интервала [10..1000010]: ");
+            int N;
+            while (!int.TryParse(Console.ReadLine(), out N) || N < 10 || N > 1000010)
+            {
+                Console.WriteLine("Невалидно число. Моля, въведете число N от интервала [10..1000010]: ");
+            }
+
+            Console.WriteLine("Генерирани числа:");
+            for (int i = 0; i < N; i++)
+            {
+                int number = random.Next(100, 10000011);
+                numbersQueue.Enqueue(number);
+                Console.Write($"{number} ");
+            }
+
+            Console.WriteLine("\nРедуцирани числа:");
+            Queue<int> reducedQueue = new Queue<int>();
+            while (numbersQueue.Count > 0)
+            {
+                int number = numbersQueue.Dequeue();
+                int reducedNumber = number / 10;
+                reducedQueue.Enqueue(reducedNumber);
+                Console.Write($"{reducedNumber} ");
+            }
+
+            Console.WriteLine("\nСамо нечетни числа:");
+            Queue<int> oddNumbersQueue = new Queue<int>();
+            while (reducedQueue.Count > 0)
+            {
+                int number = reducedQueue.Dequeue();
+                if (number % 2 != 0)
+                {
+                    oddNumbersQueue.Enqueue(number);
+                    Console.Write($"{number} ");
+                }
+            }
+        }
+    }
+}
