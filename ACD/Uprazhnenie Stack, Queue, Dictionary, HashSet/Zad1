@@ -1,0 +1,38 @@
+using System.ComponentModel.Design;
+
+namespace Uprazhnenie
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = 0;
+            while (true)
+            {
+                n = int.Parse(Console.ReadLine());
+                if (n < 1 || n > 1000)
+                    Console.WriteLine("Please enter a correct value for N");
+                else if (n >= 1 && n <= 1000)
+                    break;
+            }
+            
+            HashSet<string> requestsHashSet = new HashSet<string>();
+            Queue<string> requestsQueue = new Queue<string>();
+
+            for (int i = 0; i < n; i++)
+            {
+                string input = Console.ReadLine();
+                    if (requestsHashSet.Contains(input))
+                    { 
+                        Console.Write(""); 
+                    }
+                        else requestsQueue.Enqueue(input); 
+                requestsHashSet.Add(input);
+            }
+
+            Console.WriteLine();
+            foreach(var item in requestsQueue)
+                Console.WriteLine(item);
+        }
+    }
+}
